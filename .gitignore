@@ -5,7 +5,6 @@ node_modules/
 platforms/
 plugins/
 node_modules
-www
 .idea
 .temp
 .sass-cache
