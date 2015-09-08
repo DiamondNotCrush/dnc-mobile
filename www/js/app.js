@@ -62,17 +62,18 @@ angular.module('starter', ['ionic', 'ngMockE2E'])
   });
   $urlRouterProvider.otherwise('/main/dash');
 })
+// dummy backend
+// .run(function($httpBackend){
+//   $httpBackend.whenGET('http://localhost:8100/valid')
+//         .respond({message: 'This is my valid response!'});
+//   $httpBackend.whenGET('http://localhost:8100/notauthenticated')
+//         .respond(401, {message: "Not Authenticated"});
+//   $httpBackend.whenGET('http://localhost:8100/notauthorized')
+//         .respond(403, {message: "Not Authorized"});
 
-.run(function($httpBackend){
-  $httpBackend.whenGET('http://localhost:8100/valid')
-        .respond({message: 'This is my valid response!'});
-  $httpBackend.whenGET('http://localhost:8100/notauthenticated')
-        .respond(401, {message: "Not Authenticated"});
-  $httpBackend.whenGET('http://localhost:8100/notauthorized')
-        .respond(403, {message: "Not Authorized"});
+//   $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
+//  })
 
-  $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
- })
 
 .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
   $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
