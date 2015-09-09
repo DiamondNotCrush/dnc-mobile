@@ -27,10 +27,11 @@ angular.module('starter')
 .controller('LoginCtrl', function($scope, $state, $ionicPopup, AuthService) {
   $scope.data = {};
 
-  $scope.login = function(data) {
-    AuthService.login(data.username, data.password).then(function(authenticated) {
+  $scope.login = function() {
+    AuthService.login($scope.data.username, $scope.data.password).then(function(authenticated) {
       $state.go('main.dash', {}, {reload: true});
-      $scope.setCurrentUsername(data.username);
+      $scope.setCurrentUsername(authenticated.data.username);
+      console.log(authenticated);
     }, function(err) {
       var alertPopup = $ionicPopup.alert({
         title: 'Login failed!',

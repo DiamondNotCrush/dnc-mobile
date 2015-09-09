@@ -43,17 +43,24 @@ angular.module('starter')
     window.localStorage.removeItem(LOCAL_TOKEN_KEY);
   }
 
-  var login = function(name, pw) {
-    return $q(function(resolve, reject) {
-      if ((name == 'admin' && pw == '1') || (name == 'user' && pw == '1')) {
-        // Make a request and receive your auth token from your server
-        storeUserCredentials(name + '.yourServerToken');
-        resolve('Login success.');
-      } else {
-        reject('Login Failed.');
-      }
-    });
-  };
+  // var login = function(name, pw) {
+  //   return $q(function(resolve, reject) {
+  //     if ((name == 'admin' && pw == '1') || (name == 'tset' && pw == '1')) {
+  //       // Make a request and receive your auth token from your server
+  //       storeUserCredentials(name + '.yourServerToken');
+  //       resolve('Login success.');
+  //     } else {
+  //       reject('Login Failed.');
+  //     }
+  //   });
+  // };
+
+  var login = function(name, pw, callback){
+  return $http.post('http://dnctest.herokuapp.com/user/login', { username: name, password: pw });
+              // .then(function (response) {
+              //      callback(response);
+              //   });	
+  }
 
   var logout = function() {
     destroyUserCredentials();
