@@ -61,24 +61,30 @@ angular.module('starter', ['ionic', 'ngMockE2E', 'ngResource'])
       authorizedRoles: [USER_ROLES.admin]
     }
   });
-  $urlRouterProvider.otherwise('/main/dash');
+  $urlRouterProvider.otherwise(function ($injector, $location) {
+    var $state = $injector.get("$state");
+    $state.go("main.dash");
+});
 })
 // dummy backend
 .run(function($httpBackend){
-  $httpBackend.whenGET('http://dnctest.herokuapp.com/user/login')
-        .respond({message: 'This is my valid response!'});
+  // $httpBackend.whenGET('http://dnctest.herokuapp.com/user/login')
+  //       .respond({message: 'This is my valid response!'});
   $httpBackend.whenGET('http://localhost:8100/notauthenticated')
         .respond(401, {message: "Not Authenticated"});
   $httpBackend.whenGET('http://localhost:8100/notauthorized')
         .respond(403, {message: "Not Authorized"});
-
+  $httpBackend.whenPOST('http://dnctest.herokuapp.com/user/login').respond(function(method, url, data) {
+    isAuthenticated = true;
+     return  [200 , { response: true, message: "Connected", authorizationToken: "WEzMDQtYWYyMjkyMzNiOGIy" } ];
+  });
   $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
-  $httpBackend.whenPOST('http://dnctest.herokuapp.com/user/login')
-  	    .respond(200, {
-  id: 301,
-  username: 'owen',
-  email: 'me@no.com',
-  })
+  // $httpBackend.whenPOST('http://dnctest.herokuapp.com/user/login').passThrough();
+  // 	    .respond(200, {
+  // id: 301,
+  // username: 'owen',
+  // email: 'me@no.com',
+  // })
 })
 
 
