@@ -4,10 +4,10 @@
 node_modules/
 platforms/
 plugins/
-lib/
-img/
-css/
-hooks/
+_lib
+_img
+_css
+_hooks
 node_modules
 .idea
 .temp
