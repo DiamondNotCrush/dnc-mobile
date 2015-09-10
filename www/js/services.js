@@ -56,11 +56,24 @@ angular.module('starter')
   // };
 
   var login = function(name, pw, callback){
+
   return $http.post('http://dnctest.herokuapp.com/user/login', { username: name, password: pw });
               // .then(function (response) {
               //      callback(response);
               //   });	
   }
+
+  //   var login = function(name, pw, data){
+  //    return $q(function(resolve, reject) {
+  //    	console.log(isAuthenticated)
+  // if (true){
+  // 	    storeUserCredentials(name + '.yourServerToken');
+  //     resolve('Login success.');
+ 
+  //       } else {
+  //        reject('Login Failed.');
+  //      }
+  //    });
 
   var logout = function() {
     destroyUserCredentials();
