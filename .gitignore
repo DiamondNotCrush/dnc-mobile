@@ -1,0 +1,24 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+node_modules/
+platforms/
+plugins/
+lib/
+img/
+css/
+hooks/
+node_modules
+.idea
+.temp
+.sass-cache
+<%= appPath %>/bower_components
+coverage
+platforms
+plugins
+*.swp
+*.swo
+*.log
+*.DS_Store
+
+app/scripts/configuration.js
