@@ -28,6 +28,15 @@ angular.module('starter', ['ionic', 'ngMockE2E', 'ngResource'])
     controller: 'LoginCtrl',
     controllerAs: 'login'
   })
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'templates/signup.html',
+    views: {
+        'signup-tab': {
+          templateUrl: 'templates/signup.html'
+        }
+    }
+  })
   .state('main', {
     url: '/',
     abstract: true,
