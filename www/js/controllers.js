@@ -33,6 +33,7 @@ angular.module('starter')
       $state.go('main.dash', {}, {reload: true});
 
       $scope.setCurrentUsername(authenticated.username);
+      console.log(authenticated.data.id)
       console.log(authenticated)
     }, function(err) {
       var alertPopup = $ionicPopup.alert({
@@ -57,9 +58,11 @@ angular.module('starter')
   };
 
   $scope.performUnauthorizedRequest = function() {
-    $http.get('http://localhost:8100/notauthorized').then(
+    $http.get('http://dnctest.herokuapp.com/connection/library/301').then(
       function(result) {
+      	console.log(result)
         // No result here..
+        console.log(result.data[1])
       }, function(err) {
         $scope.response = err;
       });

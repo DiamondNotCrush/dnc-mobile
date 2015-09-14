@@ -33,7 +33,8 @@ angular.module('starter', ['ionic', 'ngMockE2E', 'ngResource'])
     templateUrl: 'templates/signup.html',
     views: {
         'signup-tab': {
-          templateUrl: 'templates/signup.html'
+          templateUrl: 'templates/signup.html',
+          controller: 'SignupCtrl'
         }
     }
   })
@@ -87,6 +88,7 @@ angular.module('starter', ['ionic', 'ngMockE2E', 'ngResource'])
   //   isAuthenticated = true;
   //    return  [200 , { response: true, message: "Connected", authToken: "WEzMDQtYWYyMjkyMzNiOGIy" } ];
   // });
+$httpBackend.whenGET('http://dnctest.herokuapp.com/connection/library/301').passThrough();
   $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
   $httpBackend.whenPOST('http://dnctest.herokuapp.com/user/login').passThrough()
   // 	    .respond(200, {
