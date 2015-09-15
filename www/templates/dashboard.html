@@ -8,7 +8,9 @@
       <h3 class="title">Welcome {{username}}!</h3>
       This could be your Dashboard.
       <br><br><br>
-<a ng-repeat="x in result" href={{ x.url }}>{{ x.name }}</a>
+	  <ion-list>
+<ion-item a ng-repeat="x in result" href= "{{ x.url }}">{{ x.name }}</a></ion-item>
+</ion-list>
       <br><br>
       {{response}}
     </div></div>
