@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'ngMockE2E', 'ngResource'])
+angular.module('starter', ['ionic', 'ngResource'])
 // bower install angular-mocks --save
 // <script src="lib/angular-mocks/angular-mocks.js"></script>
 // https://docs.angularjs.org/api/ngMockE2E
@@ -75,27 +75,6 @@ angular.module('starter', ['ionic', 'ngMockE2E', 'ngResource'])
     var $state = $injector.get("$state");
     $state.go("main.dash");
 });
-})
-// dummy backend
-.run(function($httpBackend){
-  // $httpBackend.whenGET('http://dnctest.herokuapp.com/user/login')
-  //       .respond({message: 'This is my valid response!'});
-  // $httpBackend.whenGET('http://localhost:8100/notauthenticated')
-  //       .respond(401, {message: "Not Authenticated"});
-  // $httpBackend.whenGET('http://localhost:8100/notauthorized')
-  //       .respond(403, {message: "Not Authorized"});
-  // // $httpBackend.whenPOST('http://dnctest.herokuapp.com/user/login').respond(function(method, url, data) {
-  //   isAuthenticated = true;
-  //    return  [200 , { response: true, message: "Connected", authToken: "WEzMDQtYWYyMjkyMzNiOGIy" } ];
-  // });
-$httpBackend.whenGET('http://dnctest.herokuapp.com/connection/library/301').passThrough();
-  $httpBackend.whenGET(/templates\/\w+.*/).passThrough();
-  $httpBackend.whenPOST('http://dnctest.herokuapp.com/user/login').passThrough()
-  // 	    .respond(200, {
-  // id: 301,
-  // username: 'owen',
-  // email: 'me@no.com',
-  // })
 })
 
 
