@@ -45,35 +45,49 @@ angular.module('starter')
 })
 
 .controller('DashCtrl', function($scope, $state, $http, $ionicPopup, AuthService) {
+
+
+	    $http.get('http://dnctest.herokuapp.com/connection/library/301').success(
+      function(result) {
+      	console.log(result[0].name)
+        // No result here..
+        $scope.result = result;
+
+        console.log(result[1].url)
+
+      }, function(err) {
+        $scope.response = err;
+      });
   $scope.logout = function() {
     AuthService.logout();
     $state.go('login');
   };
 
-  $scope.performValidRequest = function() {
-    $http.get('http://localhost:8100/valid').then(
-      function(result) {
-        $scope.response = result;
-      });
-  };
+//   $scope.performValidRequest = function() {
+//     $http.get('http://localhost:8100/valid').then(
+//       function(result) {
+//         $scope.response = result;
+//       });
+//   };
 
-  $scope.performUnauthorizedRequest = function() {
-    $http.get('http://dnctest.herokuapp.com/connection/library/301').then(
-      function(result) {
-      	console.log(result)
-        // No result here..
-        console.log(result.data[1])
-      }, function(err) {
-        $scope.response = err;
-      });
-  };
+//   $scope.performUnauthorizedRequest = function() {
+//     $http.get('http://dnctest.herokuapp.com/connection/library/301').then(
+//       function(result) {
+//       	console.log(result)
+//         // No result here..
+//         $scope.names = result.data.name
+//         console.log(result.data[1].name)
+//       }, function(err) {
+//         $scope.response = err;
+//       });
+//   };
 
-  $scope.performInvalidRequest = function() {
-    $http.get('http://localhost:8100/notauthenticated').then(
-      function(result) {
-        // No result here..
-      }, function(err) {
-        $scope.response = err;
-      });
-  };
+//   $scope.performInvalidRequest = function() {
+//     $http.get('http://localhost:8100/notauthenticated').then(
+//       function(result) {
+//         // No result here..
+//       }, function(err) {
+//         $scope.response = err;
+//       });
+//   };
 });
