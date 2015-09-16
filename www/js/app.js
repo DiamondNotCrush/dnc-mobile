@@ -52,25 +52,7 @@ angular.module('starter', ['ionic', 'ngResource'])
         }
     }
   })
-  .state('main.public', {
-    url: 'main/public',
-    views: {
-        'public-tab': {
-          templateUrl: 'templates/public.html'
-        }
-    }
-  })
-  .state('main.admin', {
-    url: 'main/admin',
-    views: {
-        'admin-tab': {
-          templateUrl: 'templates/admin.html'
-        }
-    },
-    data: {
-      authorizedRoles: [USER_ROLES.admin]
-    }
-  });
+  
   $urlRouterProvider.otherwise(function ($injector, $location) {
     var $state = $injector.get("$state");
     $state.go("main.dash");
