@@ -1,12 +1,12 @@
-<ion-view view-title="Dashboard" name="dashboard-view">
+<ion-view view-title="DNC Media" name="dashboard-view">
   <ion-nav-buttons side="right">
     <button class="button icon-left ion-log-out button-stable" ng-click="logout()">Logout</button>
   </ion-nav-buttons>
-
+    
   <ion-content class="padding">
     <div class="row"><div class="col text-center">
       <h3 class="title">Welcome {{username}}!</h3>
-      This could be your Dashboard.
+      Available Media Files: 
       <br><br><br>
 	  <ion-list>
 <ion-item a ng-repeat="x in result" href= "{{ x.url }}">{{ x.name }}</a></ion-item>
