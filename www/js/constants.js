@@ -8,3 +8,5 @@ angular.module('starter')
 .constant('USER_ROLES', {
   public: 'public_role'
 });
+
+//can add roles here for secret access and admin panel if needed

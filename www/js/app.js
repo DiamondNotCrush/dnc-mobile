@@ -19,7 +19,7 @@ angular.module('starter', ['ionic', 'ngResource'])
     }
   });
 })
-
+//states
 .config(function ($stateProvider, $urlRouterProvider, USER_ROLES) {
   $stateProvider
   .state('login', {
