@@ -13,7 +13,7 @@ angular.module('starter')
       useCredentials(token);
     }
   }
-
+//user cred for storage session
   function storeUserCredentials(token) {
     window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
     useCredentials(token);
@@ -24,9 +24,6 @@ angular.module('starter')
     isAuthenticated = true;
     authToken = token;
 
-    if (username == 'admin') {
-      role = USER_ROLES.admin
-    }
     if (username == 'user') {
       role = USER_ROLES.public
     }
@@ -43,38 +40,13 @@ angular.module('starter')
     window.localStorage.removeItem(LOCAL_TOKEN_KEY);
   }
 
-  // var login = function(name, pw) {
-  //   return $q(function(resolve, reject) {
-  //     if ((name == 'admin' && pw == '1') || (name == 'tset' && pw == '1')) {
-  //       // Make a request and receive your auth token from your server
-  //       storeUserCredentials(name + '.yourServerToken');
-  //       resolve('Login success.');
-  //     } else {
-  //       reject('Login Failed.');
-  //     }
-  //   });
-  // };
-
+//login and token
   var login = function(name, pw, callback){
     storeUserCredentials(name + '.yourServerToken');
     return $http.post('http://dnctest.herokuapp.com/user/login', { username: name, password: pw });
   }
 
-//     var login = function(name, pw, data){
-//   	$http.post('http://dnctest.herokuapp.com/user/login', { username: name, password: pw })
-//      return $q(function(resolve, reject) {
-
-
-//   if (true){
-
-//   	    storeUserCredentials(name + '.yourServerToken');
-//       resolve('Login success.');
- 
-//         } else {
-//          reject('Login Failed.');
-//        }
-//      });
-// }
+//simple log out
   var logout = function() {
     destroyUserCredentials();
   };
@@ -98,7 +70,7 @@ angular.module('starter')
   };
 })
 
-
+//auth responses
 .factory('AuthInterceptor', function ($rootScope, $q, AUTH_EVENTS) {
   return {
     responseError: function (response) {
@@ -114,3 +86,9 @@ angular.module('starter')
 .config(function ($httpProvider) {
   $httpProvider.interceptors.push('AuthInterceptor');
 });
+
+function MyCtrl($scope, $ionicNavBarDelegate) {
+  $scope.goBack = function() {
+    $ionicNavBarDelegate.back();
+  };
+}

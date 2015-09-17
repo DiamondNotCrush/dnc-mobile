@@ -18,7 +18,9 @@ angular.module('starter')
       template: 'Sorry, You have to login again.'
     });
   });
-
+  $scope.goBack = function() {
+    $ionicNavBarDelegate.back();
+  };
   $scope.setCurrentUsername = function(name) {
     $scope.username = name;
   };
@@ -63,31 +65,6 @@ angular.module('starter')
     $state.go('login');
   };
 
-//   $scope.performValidRequest = function() {
-//     $http.get('http://localhost:8100/valid').then(
-//       function(result) {
-//         $scope.response = result;
-//       });
-//   };
-
-//   $scope.performUnauthorizedRequest = function() {
-//     $http.get('http://dnctest.herokuapp.com/connection/library/301').then(
-//       function(result) {
-//       	console.log(result)
-//         // No result here..
-//         $scope.names = result.data.name
-//         console.log(result.data[1].name)
-//       }, function(err) {
-//         $scope.response = err;
-//       });
-//   };
-
-//   $scope.performInvalidRequest = function() {
-//     $http.get('http://localhost:8100/notauthenticated').then(
-//       function(result) {
-//         // No result here..
-//       }, function(err) {
-//         $scope.response = err;
-//       });
-//   };
 });
+
+
