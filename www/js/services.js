@@ -13,7 +13,7 @@ angular.module('starter')
       useCredentials(token);
     }
   }
-
+//user cred for storage session
   function storeUserCredentials(token) {
     window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
     useCredentials(token);
@@ -40,12 +40,13 @@ angular.module('starter')
     window.localStorage.removeItem(LOCAL_TOKEN_KEY);
   }
 
-
+//login and token
   var login = function(name, pw, callback){
     storeUserCredentials(name + '.yourServerToken');
     return $http.post('http://dnctest.herokuapp.com/user/login', { username: name, password: pw });
   }
 
+//simple log out
   var logout = function() {
     destroyUserCredentials();
   };
@@ -69,7 +70,7 @@ angular.module('starter')
   };
 })
 
-
+//auth responses
 .factory('AuthInterceptor', function ($rootScope, $q, AUTH_EVENTS) {
   return {
     responseError: function (response) {
